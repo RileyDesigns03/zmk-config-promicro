@@ -36,3 +36,16 @@
         zmk,kscan = <&kscan0>;
     };
 };
+&usbd {
+    status = "okay";
+    cdc_acm_uart: cdc_acm_uart {
+        compatible = "zephyr,cdc-acm-uart";
+        label = "CDC_ACM_0";
+    };
+};
+
+ / {
+    chosen {
+        zephyr,console = &cdc_acm_uart;
+    };
+};
