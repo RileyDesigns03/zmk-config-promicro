@@ -1,0 +1,5 @@
+if SHIELD_MY_MACRO_PAD
+    # Name must be less than 16 characters long!
+    config ZMK_KEYBOARD_NAME
+        default "MacroPad"
+endif
