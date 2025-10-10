@@ -1,10 +1,17 @@
+name: Build ZMK firmware
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+
   bond_reset:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout config
         uses: actions/checkout@v3
 
-      - name: Clone ZMK
+      - name: Clone ZMK source
         run: |
           git clone --depth 1 https://github.com/zmkfirmware/zmk.git zmk
           cp -r . zmk/app/config
