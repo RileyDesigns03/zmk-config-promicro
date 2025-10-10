@@ -1,10 +1,3 @@
-name: Build ZMK firmware
-on: [push, pull_request, workflow_dispatch]
-
-jobs:
-  build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
-
   bond_reset:
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +10,7 @@ jobs:
           shield: my_macro_pad
           extra-cmake: -DCONFIG_ZMK_BOND_CLEAR=y
       - name: Upload bond reset UF2
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bond-reset
           path: build/zephyr/zmk.uf2
