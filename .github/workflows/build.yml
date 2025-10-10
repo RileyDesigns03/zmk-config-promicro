@@ -7,10 +7,11 @@
       - name: Clone ZMK source
         run: |
           git clone --depth 1 https://github.com/zmkfirmware/zmk.git zmk
-          mkdir -p zmk/app/config
-          cp config/*.keymap zmk/app/config/ || true
-          cp config/*.conf zmk/app/config/ || true
-          cp config/*.overlay zmk/app/config/ || true
+
+      - name: Link config
+        run: |
+          rm -rf zmk/app/config
+          ln -s $GITHUB_WORKSPACE/config zmk/app/config
 
       - name: Install west and deps
         run: pip install west
