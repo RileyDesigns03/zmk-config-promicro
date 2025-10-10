@@ -4,14 +4,12 @@
 / {
     keymap {
         compatible = "zmk,keymap";
-
         default_layer {
-            // 4x3 MacroPad layout, adjust keys as needed
             bindings = <
-                A B C
-                D E F
-                G H I
-                J K L
+                &kp A &kp B &kp C
+                &kp D &kp E &kp F
+                &kp G &kp H &kp I
+                &kp J &kp K &kp L
             >;
         };
     };
