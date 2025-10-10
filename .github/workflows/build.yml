@@ -1,11 +1,17 @@
+name: Build ZMK firmware
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+
   bond_reset:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout config
         uses: actions/checkout@v3
       - name: Install west and deps
-        run: |
-          pip install west
+        run: pip install west
       - name: Init and Update west
         run: |
           west init -l .
