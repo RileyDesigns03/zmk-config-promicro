@@ -1,26 +1,30 @@
-name: Build ZMK firmware
-on: [push, pull_request, workflow_dispatch]
-
-jobs:
-  build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
-
   bond_reset:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout config
         uses: actions/checkout@v3
+
+      - name: Clone ZMK
+        run: |
+          git clone --depth 1 https://github.com/zmkfirmware/zmk.git zmk
+          cp -r . zmk/app/config
+
       - name: Install west and deps
         run: pip install west
+
       - name: Init and Update west
+        working-directory: zmk
         run: |
-          west init -l .
+          west init -l app
           west update
+
       - name: Build Bond Reset (nice_nano_v2, my_macro_pad)
+        working-directory: zmk/app
         run: |
           west build -b nice_nano_v2 -- -DSHIELD=my_macro_pad -DCONFIG_ZMK_BOND_CLEAR=y
+
       - name: Upload bond reset UF2
         uses: actions/upload-artifact@v4
         with:
           name: bond-reset
-          path: build/zephyr/zmk.uf2
+          path: zmk/app/build/zephyr/zmk.uf2
