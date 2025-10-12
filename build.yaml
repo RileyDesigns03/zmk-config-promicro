@@ -20,4 +20,7 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: my_macro_pad
+    shield: my_macro_pad       # <-- Use your shield/overlay name here
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: macro_pad   # <-- This can be anything, for the filename/artifact
