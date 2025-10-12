@@ -5,8 +5,6 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,physical-layout = &macro_pad_layout;
-        zephyr,console = &uart0;
-        zephyr,shell-uart = &uart0;
     };
 
     macro_pad_transform: macro_pad_transform {
