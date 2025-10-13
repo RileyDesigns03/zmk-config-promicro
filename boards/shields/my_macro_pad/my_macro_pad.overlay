@@ -5,7 +5,6 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,physical-layout = &macro_pad_layout;
-        zmk,underglow = &led_strip;     /* added this for RBG's */
     };
 
     macro_pad_transform: macro_pad_transform {
