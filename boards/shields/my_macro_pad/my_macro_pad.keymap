@@ -12,14 +12,14 @@
                 &kp N1  &kp N2  &kp N3
                 &kp N4  &kp N5  &kp N6
                 &kp N7  &kp N8  &kp N9
-                &kp N0  &underglow_hue_inc   &underglow_hue_dec     // Pad out row 4 if you only have 10 keys
+                &kp N0  &none   &none     // Pad out row 4 if you only have 10 keys
             >;
         };
 
         bt_layer {
             display-name = "Bluetooth";
             bindings = <
-                &trans &trans &trans
+                &rgb_ug RGB_HUI &rgb_ug RGB_HUD &trans
                 &trans &trans &trans
                 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
                 &bt BT_CLR &none &none
